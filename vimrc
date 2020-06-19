@@ -5,7 +5,7 @@ set shiftwidth=4
 set expandtab
 
 " Set color scheme.
-colorscheme desert
+colorscheme industry
 
 " Remap CTRL-w to Leader-w.
 " This is useful for vims where CTRL-w already does something else such as in
