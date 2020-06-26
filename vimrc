@@ -7,6 +7,8 @@ set expandtab
 colorscheme industry
 
 " Remap CTRL-w to Leader-w.
+" This is useful for vims where CTRL-w already does something else such as in
+" an AWS Cloud 9 environment whee CTRL-w closes the browser window.
 nnoremap <Leader>w <C-w>
 
 " Allow switching buffers when there are unsaved changes.
