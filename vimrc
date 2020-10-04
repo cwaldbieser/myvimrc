@@ -3,6 +3,56 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Python support
+let g:python3_host_prog = '/home/waldbiec/.virtualenvs/nvimenv/bin/python'
+
+" Plugin support.
+"
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.config/nvim/')
+" `gruvbox` color scheme
+Plug 'morhetz/gruvbox'
+" `deoplete` autocompletion
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+" deoplete-jedi
+Plug 'zchee/deoplete-jedi'
+" jedi-vim for go-to-source capabilities.
+Plug 'davidhalter/jedi-vim'
+" airline - status line enhancement
+Plug 'vim-airline/vim-airline'
+" NERDcomment
+Plug 'preservim/nerdcommenter'
+" Initialize plugin system
+" NERDtree - file manager
+Plug 'preservim/nerdtree'
+call plug#end()
+
+" deoplete plugin configuration
+" - automatically close preview window.
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
+let g:deoplete#sources#jedi#show_docstring = 1
+
+" jedi-vim
+" - disable autocompletion, because we use deoplete for completion
+let g:jedi#completions_enabled = 0
+" - open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+" Filetype detection
+filetype plugin on
+
+" Relative number
+set rnu
+
 " Set color scheme.
 colorscheme industry
 
