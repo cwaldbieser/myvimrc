@@ -39,6 +39,8 @@ I am currently trying out the following plugins:
 * vim-airline: make the status line more useful and colorful
 * NERDcomment: programming language aware comment / uncomment support
 * NERDTree: IDE-like file explorer
+* Neomake: run code linters
+* Neoformat: run code formatters
 
 I use `vim-plug <https://github.com/junegunn/vim-plug>`_ to manage my plugins.  I installed it with:
 

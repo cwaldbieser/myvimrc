@@ -34,6 +34,12 @@ Plug 'preservim/nerdcommenter'
 " Initialize plugin system
 " NERDtree - file manager
 Plug 'preservim/nerdtree'
+" Neomake - for code linting
+Plug 'neomake/neomake'
+" vim-unimpared - shortcuts for paired operations like :lnext/:lprev
+Plug 'tpope/vim-unimpaired'
+" neoformat - code formatter
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 " deoplete plugin configuration
@@ -47,6 +53,24 @@ let g:jedi#completions_enabled = 0
 " - open the go-to function in split, not another buffer
 let g:jedi#use_splits_not_buffers = "right"
 
+" Neomake
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_flake8_maker = {
+  \ 'exe': '/home/waldbiec/.virtualenvs/nvimenv/bin/flake8',
+  \ 'args': ['--format=default'],
+  \ 'errorformat':
+      \ '%E%f:%l: could not compile,%-Z%p^,' .
+      \ '%A%f:%l:%c: %t%n %m,' .
+      \ '%A%f:%l: %t%n %m,' .
+      \ '%-G%.%#',
+  \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+  \ }
+
+" Neoformat
+let g:neoformat_python_yapf = {
+    \ 'exe': '/home/waldbiec/.virtualenvs/nvimenv/bin/yapf'
+    \ }
+
 " Filetype detection
 filetype plugin on
 
@@ -57,8 +81,6 @@ set rnu
 colorscheme industry
 
 " Remap CTRL-w to Leader-w.
-" This is useful for vims where CTRL-w already does something else such as in
-" an AWS Cloud 9 environment whee CTRL-w closes the browser window.
 nnoremap <Leader>w <C-w>
 
 " Allow switching buffers when there are unsaved changes.
