@@ -16,7 +16,7 @@ To take advantage of some of the newer features for neovim, I decided to upgrade
 
 .. code:: bash
 
-    $ sudo add-apt-repository ppa:neovim-ppa/stable 
+    $ sudo add-apt-repository ppa:neovim-ppa/stable
     $ sudo apt-get update
     $ sudo apt-get install neovim
 
